@@ -21,7 +21,7 @@ export class CustomerServiceService {
   }
 
   create(data: any): Observable<Customer> {
-    return this.http.post(`${baseUrl}`, data)
+    return this.http.post(baseUrl, data)
   }
 
   update(id: any, data: any): Observable<Customer> {

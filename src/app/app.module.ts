@@ -3,26 +3,26 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CustomerModel } from './models/customer/customer.model';
-import { OrderModel } from './models/order/order.model';
-import { OrderItemModel } from './models/order-item/order-item.model';
-import { ProductModel } from './models/product/product.model';
-import { StaffModel } from './models/staff/staff.model';
-import { StockModel } from './models/stock/stock.model';
-import { StoreModel } from './models/store/store.model';
-import { ListBikesComponent } from './components/list-bikes/list-bikes.component';
+import { Customer } from './models/customer.model';
+import { Order } from './models/order.model';
+import { OrderItem } from './models/order-item.model';
+import { Product } from './models/product.model';
+import { Staff } from './models/staff.model';
+import { Stock } from './models/stock.model';
+import { Store } from './models/store.model';
+import { ListStoresComponent } from './components/list-stores/list-stores.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomerModel,
-    OrderModel,
-    OrderItemModel,
-    ProductModel,
-    StaffModel,
-    StockModel,
-    StoreModel,
-    ListBikesComponent
+    Customer,
+    Order,
+    OrderItem,
+    Product,
+    Staff,
+    Stock,
+    Store,
+    ListStoresComponent
   ],
   imports: [
     BrowserModule,
