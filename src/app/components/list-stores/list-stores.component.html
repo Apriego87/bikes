@@ -1,11 +1,12 @@
 <div class="list row">
-    <div class="col-md-6">
+    <div class="col-md-8">
         <div class="col-md-8">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="name" />
+                <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="name"
+                    (ngModelChange)="searchName()" />
                 <div class="input-group-append">
-                    <!-- abajo: (click)="searchTitle()" -->
-                    <button class="btn btn-outline-secondary" type="button">
+                    <!-- abajo: " -->
+                    <button class="btn btn-outline-secondary" type="button" (click)="searchName()">
                         Search
                     </button>
                 </div>
@@ -15,8 +16,15 @@
         <ul class="list-group">
             @for (store of stores; track store.id; let i = $index) {
             <li class="list-group-item" [class.active]="i == currentIndex" (click)="setActiveStore(store, i)">
-                <p>{{ store.name }} ({{ store.city }})</p>
+                <p>{{ store.name }} ({{ store.city }})
+                    @if (currentIndex == i) {
+                    <button (click)="goToStore()" type="submit" class="badge badge-success mb-2 ml-2">
+                        See store
+                    </button>
+                    }
+                </p>
             </li>
+            }
         </ul>
 
         <!-- <div class="col-md-12">

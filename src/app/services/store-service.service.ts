@@ -32,4 +32,8 @@ export class StoreServiceService {
   delete(id: any): Observable<Store> {
     return this.http.delete(`${baseUrl}/${id}`)
   }
+
+  findByName(name: any): Observable<Store[]> {
+    return this.http.get<Store[]>(`${baseUrl}?name=${name}`);
+  }
 }
