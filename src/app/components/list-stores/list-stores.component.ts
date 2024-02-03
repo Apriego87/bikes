@@ -14,27 +14,27 @@ export class ListStoresComponent implements OnInit {
   currentIndex = -1;
   name = '';
 
-  constructor(private storeService: StoreServiceService, private router: Router) {}
+  constructor(private storeService: StoreServiceService, private router: Router) { }
 
   ngOnInit(): void {
-      this.retrieveStores();
+    this.retrieveStores();
   }
 
   retrieveStores(): void {
     this.storeService.getAll()
-    .subscribe({
-      next: (data) => {
-        this.stores = data;
-        console.log(data)
-      },
-      error: (e) => console.error(e)
-    })
+      .subscribe({
+        next: (data) => {
+          this.stores = data;
+          console.log(data)
+        },
+        error: (e) => console.error(e)
+      })
   }
 
   refreshList(): void {
     this.retrieveStores();
     this.currentStore = {};
-    this.currentIndex = -1;    
+    this.currentIndex = -1;
   }
 
   setActiveStore(store: Store, index: number): void {
@@ -57,6 +57,6 @@ export class ListStoresComponent implements OnInit {
   }
 
   goToStore(): void {
-    this.router.navigate(['/detailedStore'], { queryParams: { ["name"]: this.name } })
+    this.router.navigate(['/detailedStore'], { queryParams: { name: this.currentStore.name } })
   }
 }

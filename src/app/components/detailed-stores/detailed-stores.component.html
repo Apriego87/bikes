@@ -1,1 +1,33 @@
-<p>detailed-stores works!</p>
+<div class="list row">
+    <div class="col-md-8">
+        <!-- <div class="col-md-8">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="id"
+                    (ngModelChange)="searchName()" />
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" (click)="searchName()">
+                        Buscar  
+                    </button>
+                </div>
+            </div>
+        </div> -->
+        <h4>Lista de productos</h4>
+        <ul class="list-group">
+            @for (product of products; track product.id; let i = $index) {
+            <li class="list-group-item d-flex flex-row justify-content-between" [class.active]="i == currentIndex">
+                <p>{{ i+1 }}. {{ product.name }}</p>
+                <p>Precio: {{ product.price }}€</p>
+            </li>
+            }
+        </ul>
+
+        <!-- <div class="col-md-12">
+            <app-tutorial-details [viewMode]="false" [currentTutorial]="currentStore"
+                (restart)="restart()"></app-tutorial-details>
+        </div> -->
+    </div>
+
+    <!-- <div class="col-md-6">
+        <app-authors-list></app-authors-list>
+    </div> -->
+</div>
