@@ -8,6 +8,7 @@ import { Product } from '../../models/product.model';
   templateUrl: './detailed-stores.component.html',
   styleUrl: './detailed-stores.component.css'
 })
+
 export class DetailedStoresComponent implements OnInit {
   products?: Product[];
   currentIndex = -1;

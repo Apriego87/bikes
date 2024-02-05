@@ -13,6 +13,7 @@ export class ListStoresComponent implements OnInit {
   currentStore: Store = {};
   currentIndex = -1;
   name = '';
+  id = 0;
 
   constructor(private storeService: StoreServiceService, private router: Router) { }
 
@@ -57,6 +58,6 @@ export class ListStoresComponent implements OnInit {
   }
 
   goToStore(): void {
-    this.router.navigate(['/detailedStore'], { queryParams: { name: this.currentStore.name } })
+    this.router.navigate(['/detailedStore'], { queryParams: { name: this.currentStore.name, id: this.currentStore.id } })
   }
 }
