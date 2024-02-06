@@ -12,11 +12,10 @@ import { Product } from '../../models/product.model';
 export class DetailedStoresComponent implements OnInit {
   products?: Product[];
   currentIndex = -1;
-  id = -1;
+  name = '';
+  id = this.route.snapshot.queryParams['id'];
 
   constructor(private productService: ProductServiceService, private route: ActivatedRoute) {
-    const name = this.route.snapshot.queryParams['name'];
-    console.log(`Name: ${JSON.stringify(name)}`);
   }
 
   ngOnInit(): void {
@@ -24,7 +23,7 @@ export class DetailedStoresComponent implements OnInit {
   }
 
   retrieveProducts(): void {
-    this.productService.getProducts()
+    this.productService.getProductsByStore(this.id)
       .subscribe({
         next: (data) => {
           this.products = data;
@@ -33,17 +32,19 @@ export class DetailedStoresComponent implements OnInit {
         error: (e) => console.error(e)
       })
   }
-/* 
-  searchName(): void {
-    this.currentIndex = -1;
+  
+    searchByName(): void {
+      this.currentIndex = -1;
+  
+      console.log(this.id)
 
-    this.productService.getProductById(this.id)
-      .subscribe({
-        next: (data) => {
-          this.products = data;
-          console.log(data);
-        },
-        error: (e) => console.error(e)
-      });
-  } */
+      this.productService.searchByName(this.id, this.name)
+        .subscribe({
+          next: (data) => {
+            this.products = data;
+            console.log(data);
+          },
+          error: (e) => console.error(e)
+        });
+    }
 }

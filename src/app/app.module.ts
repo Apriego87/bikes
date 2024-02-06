@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { ListStoresComponent } from './components/list-stores/list-stores.component';
 import { FormsModule } from '@angular/forms';
 import { DetailedStoresComponent } from './components/detailed-stores/detailed-stores.component';
+import { ListStaffComponent } from './components/list-staff/list-staff.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListStoresComponent,
-    DetailedStoresComponent
+    DetailedStoresComponent,
+    ListStaffComponent
   ],
   imports: [
     BrowserModule,

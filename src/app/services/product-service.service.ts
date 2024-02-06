@@ -16,6 +16,14 @@ export class ProductServiceService {
     return this.http.get<Product[]>(baseUrl)
   }
 
+  getProductsByStore(id: any): Observable<Product[]> {
+    return this.http.get<Product[]>(`${baseUrl}?idStore=${id}`)
+  }
+
+  searchByName(id: any, name: any): Observable<Product[]> {
+    return this.http.get<Product[]>(`${baseUrl}?idStore=${id}&name=${name}`)
+  }
+
   getProductById(id: any): Observable<Product> {
     return this.http.get<Product>(`${baseUrl}/${id}`)
   }
