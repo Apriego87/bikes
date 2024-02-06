@@ -13,7 +13,8 @@ export class DetailedStoresComponent implements OnInit {
   products?: Product[];
   currentIndex = -1;
   name = '';
-  id = this.route.snapshot.queryParams['id'];
+  storeID = this.route.snapshot.queryParams['id'];
+  storeName = this.route.snapshot.queryParams['name'];
 
   constructor(private productService: ProductServiceService, private route: ActivatedRoute) {
   }
@@ -23,7 +24,7 @@ export class DetailedStoresComponent implements OnInit {
   }
 
   retrieveProducts(): void {
-    this.productService.getProductsByStore(this.id)
+    this.productService.getProductsByStore(this.storeID)
       .subscribe({
         next: (data) => {
           this.products = data;
@@ -32,19 +33,19 @@ export class DetailedStoresComponent implements OnInit {
         error: (e) => console.error(e)
       })
   }
-  
-    searchByName(): void {
-      this.currentIndex = -1;
-  
-      console.log(this.id)
 
-      this.productService.searchByName(this.id, this.name)
-        .subscribe({
-          next: (data) => {
-            this.products = data;
-            console.log(data);
-          },
-          error: (e) => console.error(e)
-        });
-    }
+  searchByName(): void {
+    this.currentIndex = -1;
+
+    console.log(this.storeID)
+
+    this.productService.searchByName(this.storeID, this.name)
+      .subscribe({
+        next: (data) => {
+          this.products = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
+  }
 }

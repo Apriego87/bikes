@@ -58,6 +58,6 @@ export class ListStoresComponent implements OnInit {
   }
 
   goToStore(): void {
-    this.router.navigate(['/detailedStore'], { queryParams: { name: this.currentStore.name, id: this.currentStore.id } })
+    this.router.navigate(['/storeRoot'], { queryParams: { name: this.currentStore.name, id: this.currentStore.id } })
   }
 }

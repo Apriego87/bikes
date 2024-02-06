@@ -1,39 +1,52 @@
-<div class="list row">
-    <div class="col-md-8">
+<div>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <a href="#" class="navbar-brand">BikeShop</a>
+
+        <div class="navbar-nav mr-auto">
+            <!-- <li class="nav-item">
+                <a routerLink="/storeRoot" class="nav-link">listar tiendas</a>
+            </li> -->
+            <li class="nav-item">
+                <a routerLink="/add" class="nav-link">añadir tiendas</a>
+            </li>
+        </div>
+    </nav>
+
+    <div class="list row mt-3 justify-content-around">
         <div class="col-md-8">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="name"
-                    (ngModelChange)="searchName()" />
-                <div class="input-group-append">
-                    <!-- abajo: " -->
-                    <button class="btn btn-outline-secondary" type="button" (click)="searchName()">
-                        Search
-                    </button>
+            <div class="col-md-8">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="name"
+                        (ngModelChange)="searchName()" />
+                    <div class="input-group-append">
+                        <!-- abajo: " -->
+                        <button class="btn btn-outline-secondary" type="button" (click)="searchName()">
+                            Search
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <h4>Lista de tiendas</h4>
-        <ul class="list-group">
-            @for (store of stores; track store.id; let i = $index) {
-            <li class="list-group-item" [class.active]="i == currentIndex" (click)="setActiveStore(store, i)">
-                <p>{{ store.name }} ({{ store.city }})
-                    @if (currentIndex == i) {
-                    <button (click)="goToStore()" type="submit" class="badge badge-success mb-2 ml-2">
-                        See store
-                    </button>
+            <h4>Lista de tiendas</h4>
+            <ul class="list-group">
+                @if(stores !== null) {
+                    @for (store of stores; track store.id; let i = $index) {
+                    <li class="list-group-item" [class.active]="i == currentIndex" (click)="setActiveStore(store, i)">
+                        <p>{{ store.name }} ({{ store.city }})
+                            @if (currentIndex == i) {
+                            <button (click)="goToStore()" type="submit" class="badge badge-success mb-2 ml-2">
+                                See store
+                            </button>
+                            }
+                        </p>
+                    </li>
                     }
-                </p>
-            </li>
-            }
-        </ul>
-
-        <!-- <div class="col-md-12">
-            <app-tutorial-details [viewMode]="false" [currentTutorial]="currentStore"
-                (restart)="restart()"></app-tutorial-details>
-        </div> -->
+                }
+                @else {
+                    <div class="alert alert-warning text-center" role="alert">
+                        <p>No se han encontrado resultados</p>
+                    </div>
+                }
+            </ul>
+        </div>
     </div>
-
-    <!-- <div class="col-md-6">
-        <app-authors-list></app-authors-list>
-    </div> -->
 </div>

@@ -1,0 +1,26 @@
+<div>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" (click)="[(component = 'details')]">{{ this.storeName }} details</a>
+
+        <div class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a routerLink="#" class="nav-link">listar clientes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="[(component = 'listStaff')]">listar staff</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/" class="nav-link">listar tiendas</a>
+            </li>
+        </div>
+    </nav>
+    @if(component === 'details') {
+    <app-detailed-stores></app-detailed-stores>
+    }
+    @else if (component === 'listStaff') {
+    <app-list-staff [idStore]="this.storeID" (componentChange)="updateComponent($event)"></app-list-staff>
+    }
+    @else if (component === 'addStaff') {
+    <app-add-staff ></app-add-staff>
+    }
+</div>
