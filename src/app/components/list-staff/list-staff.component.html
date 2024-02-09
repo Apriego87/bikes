@@ -1,6 +1,6 @@
 <div>
     <div class="list mt-3 d-flex flex-col justify-content-around">
-        <div class="col-md-8">
+        <div class="col-md-4">
             <div class="col-md-8 d-flex justify-content-center">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="name"
@@ -12,7 +12,7 @@
                     </div>
                 </div>
             </div>
-            <h4>Lista de productos</h4>
+            <h4>Lista de staff</h4>
             <ul class="list-group">
                 @if(staffs !== null){
                     @for (staff of staffs; track staff.id; let i = $index) {

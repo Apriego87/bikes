@@ -21,6 +21,6 @@
     <app-list-staff [idStore]="this.storeID" (componentChange)="updateComponent($event)"></app-list-staff>
     }
     @else if (component === 'addStaff') {
-    <app-add-staff></app-add-staff>
+    <app-add-staff [idStore]="this.storeID"></app-add-staff>
     }
 </div>

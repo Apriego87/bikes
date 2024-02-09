@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '../../models/store.model';
 import { StoreServiceService } from '../../services/store-service.service';
 import { FormBuilder, NgForm } from '@angular/forms';
 import { StaffService } from '../../services/staff.service';
+import { Staff } from '../../models/staff.model';
 
 
 @Component({
@@ -13,12 +14,14 @@ import { StaffService } from '../../services/staff.service';
 export class AddStaffComponent implements OnInit {
   selectedOption = ''
   stores?: Store[]
+  @Input() idStore = -1
 
-  newStaff = {
+  staff: Staff = {
     name: '',
     surname: '',
     phone: '',
-    email: ''
+    email: '',
+    store: {}
   }
 
   constructor(private storeService: StoreServiceService, private staffService: StaffService) { }
@@ -32,6 +35,25 @@ export class AddStaffComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.stores = data;
+          console.log(data)
+        },
+        error: (e) => console.error(e)
+      })
+  }
+
+  newStaff(): void {
+    const data = {
+      name: this.staff.name,
+      surname: this.staff.surname,
+      phone: this.staff.phone,
+      email: this.staff.email,
+      store: { id: this.selectedOption }
+    }
+
+    this.staffService.create(data)
+      .subscribe({
+        next: (data) => {
+          this.staff = data;
           console.log(data)
         },
         error: (e) => console.error(e)

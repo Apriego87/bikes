@@ -1,36 +1,36 @@
 <div class="col-md-12 d-flex justify-content-center">
-    <form class="col-md-6 mt-3 d-flex flex-column justify-content-around">
+    <form class="col-md-3 mt-3 d-flex flex-column justify-content-around">
         <div class="mt-3 text-center">
             <h1>Añadir staff</h1>
         </div>
         <div class="mt-3 d-flex flex-column">
             <label for="name">Nombre: </label>
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" id="name" [(ngModel)]="staff.name">
         </div>
         <div class="mt-3 d-flex flex-column">
             <label for="surname">Apellido: </label>
-            <input type="text" name="surname" id="surname">
+            <input type="text" name="surname" id="surname" [(ngModel)]="staff.surname">
         </div>
         <div class="mt-3 d-flex flex-column">
             <label for="phone">Teléfono: </label>
-            <input type="tel" name="phone" id="phone">
+            <input type="tel" name="phone" id="phone" [(ngModel)]="staff.phone">
         </div>
         <div class="mt-3 d-flex flex-column">
             <label for="email">E-mail: </label>
-            <input type="email" name="email" id="email">
+            <input type="email" name="email" id="email" [(ngModel)]="staff.email">
         </div>
         <div class="mt-3 d-flex flex-column">
             <mat-form-field>
                 <mat-label>Select a store</mat-label>
-                <mat-select [(value)]="selectedOption">
+                <mat-select [(value)]="selectedOption" name="store">
                     @for (store of stores; track $index) {
-                    <mat-option value="{{ store }}">{{ store.name }}</mat-option>
+                    <mat-option value="{{ store.id }}" >{{ store.name }}</mat-option>
                     }
                 </mat-select>
             </mat-form-field>
         </div>
-        <div class="col-md-2 mt-3 d-flex flex-column">
-            <input type="submit" value="Enviar">
+        <div class="mt-3 d-flex flex-column align-items-center">
+            <input type="submit" value="Enviar" (click)="newStaff()">
         </div>
     </form>
 </div>
