@@ -9,7 +9,7 @@ import { DetailedStoresComponent } from '../detailed-stores/detailed-stores.comp
   styleUrl: './store-root.component.css'
 })
 export class StoreRootComponent implements OnInit {
-  component = 'details'
+  component = 'addStaff'
   currentStore: Store = {}
   currentIndex = -1
   storeID = this.route.snapshot.queryParams['id'];

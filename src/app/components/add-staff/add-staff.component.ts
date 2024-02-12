@@ -12,9 +12,10 @@ import { Staff } from '../../models/staff.model';
   styleUrl: './add-staff.component.css'
 })
 export class AddStaffComponent implements OnInit {
-  selectedOption = ''
+
   stores?: Store[]
-  @Input() idStore = -1
+  @Input() storeID = 0;
+  selectedOption = 0;
 
   staff: Staff = {
     name: '',
@@ -28,6 +29,8 @@ export class AddStaffComponent implements OnInit {
 
   ngOnInit(): void {
     this.getStaff()
+    this.selectedOption = this.storeID;
+    console.log(this.selectedOption)
   }
 
   getStaff(): void {
@@ -39,6 +42,7 @@ export class AddStaffComponent implements OnInit {
         },
         error: (e) => console.error(e)
       })
+
   }
 
   newStaff(): void {
