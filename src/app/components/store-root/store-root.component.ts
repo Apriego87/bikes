@@ -12,7 +12,7 @@ export class StoreRootComponent implements OnInit {
   component = 'addStaff'
   currentStore: Store = {}
   currentIndex = -1
-  storeID = this.route.snapshot.queryParams['id'];
+  storeID = Number(this.route.snapshot.queryParams['id']);
   storeName = this.route.snapshot.queryParams['name'];
 
   constructor(private route: ActivatedRoute) { }

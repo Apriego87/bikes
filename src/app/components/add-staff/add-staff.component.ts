@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '../../models/store.model';
 import { StoreServiceService } from '../../services/store-service.service';
-import { FormBuilder, NgForm } from '@angular/forms';
 import { StaffService } from '../../services/staff.service';
 import { Staff } from '../../models/staff.model';
 
@@ -14,8 +13,8 @@ import { Staff } from '../../models/staff.model';
 export class AddStaffComponent implements OnInit {
 
   stores?: Store[]
-  @Input() storeID = 0;
-  selectedOption = 0;
+  @Input() storeID = 0
+  selectedOption = 0
 
   staff: Staff = {
     name: '',
@@ -29,8 +28,7 @@ export class AddStaffComponent implements OnInit {
 
   ngOnInit(): void {
     this.getStaff()
-    this.selectedOption = this.storeID;
-    console.log(this.selectedOption)
+    this.selectedOption = this.storeID
   }
 
   getStaff(): void {
@@ -42,7 +40,6 @@ export class AddStaffComponent implements OnInit {
         },
         error: (e) => console.error(e)
       })
-
   }
 
   newStaff(): void {
